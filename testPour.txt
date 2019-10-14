@@ -1,0 +1,23 @@
+# Fichier de test de l'instruction tantque
+# Les lignes de commentaires commencent par #
+procedure principale()
+#test1
+    j = 0;
+    pour(i=0;i<10;i=i+1)
+        j=j+1;
+    finpour
+    testPour1 = (j==i);
+#test2
+    k=1;
+    pour(j=0;j!=0;)
+        k=0;
+    finpour
+    testPour2 = (k==1);
+#test3
+    k=0;
+    pour(;j<10;j=j+1)
+        k=k+1;
+    finpour
+    testPour3 = (k==j);
+finproc
+# Commentaire Final
