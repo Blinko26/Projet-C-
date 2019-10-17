@@ -3,6 +3,8 @@
 #include "Symbole.h"
 #include "SymboleValue.h"
 #include "Exceptions.h"
+#include "Lecteur.h"
+#include "Interpreteur.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudSeqInst
@@ -81,6 +83,30 @@ int NoeudInstSi::executer() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// NoeudSiRiche
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstSiRiche::NoeudInstSiRiche(vector<Noeud *> vectInst)
+:m_vectInst(vectInst) {
+}
+
+int NoeudInstSiRiche::executer() {
+    for(int i = 0;i<m_vectInst.size();i=i+2){
+        if(m_vectInst[i+1]!=NULL){
+            if(m_vectInst[i]->executer()){
+                m_vectInst[i+1]->executer();
+                break;
+            }
+        }
+        else{
+            m_vectInst[i]->executer();
+        }
+    }
+    
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // NoeudInstTantQue
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -122,5 +148,44 @@ int NoeudInstPour::executer() {
     for(m_affectation1!=NULL?m_affectation1->executer():0;m_condition->executer();m_affectation2!=NULL?m_affectation2->executer():0){
         m_sequence->executer();
     }
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudEcrire
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstEcrire::NoeudInstEcrire(vector<Noeud *> vectInst)
+:m_vectInst(vectInst) {
+}
+
+int NoeudInstEcrire::executer() {
+    for(auto var : m_vectInst){
+        if(typeid(*var)==typeid(SymboleValue) &&  *((SymboleValue*)var)== "<CHAINE>" ){
+            cout<< ((SymboleValue*)var)->getChaine();
+        }
+        else{
+            cout << var->executer(); 
+        }
+         
+    }
+    cout << "\n";
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudLire
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstLire::NoeudInstLire(vector<Noeud *> vectInst)
+:m_vectInst(vectInst) {
+}
+
+int NoeudInstLire::executer() {
+    for(int i = 0;i<m_vectInst.size();i=i+1){
+        std::string x;
+        cin >> x;
+        }
+    
     return 0;
 }

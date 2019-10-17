@@ -81,6 +81,19 @@ class NoeudInstSi : public Noeud {
     Noeud*  m_sequence;
 };
 
+class NoeudInstSiRiche: public Noeud {
+// Classe pour représenter un noeud "instruction SiRiche"
+//  et ses 2 fils : la condition du SiRiche et la séquence d'instruction associée
+  public:
+    NoeudInstSiRiche(vector<Noeud *> vectInst);
+     // Construit une "instruction SiRiche" avec sa condition et sa séquence d'instruction
+   ~NoeudInstSiRiche() {}         // A cause du destructeur virtuel de la classe Noeud
+    int executer() override; // Exécute l'instruction SiRiche : si condition vraie on exécute la séquence
+
+  private:
+      vector<Noeud *> m_vectInst;
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 class NoeudInstTantQue : public Noeud {
 // Classe pour représenter un noeud "instruction tantque"
@@ -126,6 +139,34 @@ class NoeudInstPour: public Noeud {
     Noeud*  m_condition;
     Noeud*  m_affectation2;
     Noeud*  m_sequence;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+class NoeudInstEcrire: public Noeud {
+// Classe pour représenter un noeud "instruction Ecrire"
+//  et ses 2 fils : la condition du Ecrire et la séquence d'instruction associée
+  public:
+    NoeudInstEcrire(vector<Noeud *> vectInst);
+     // Construit une "instruction Ecrire" avec sa condition et sa séquence d'instruction
+   ~NoeudInstEcrire() {}         // A cause du destructeur virtuel de la classe Noeud
+    int executer() override; // Exécute l'instruction Ecrire : si condition vraie on exécute la séquence
+
+  private:
+    vector<Noeud *> m_vectInst;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+class NoeudInstLire: public Noeud {
+// Classe pour représenter un noeud "instruction Lire"
+//  et ses 2 fils : la condition du Lire et la séquence d'instruction associée
+  public:
+    NoeudInstLire(vector<Noeud *> vectInst);
+     // Construit une "instruction Lire" avec sa condition et sa séquence d'instruction
+   ~NoeudInstLire() {}         // A cause du destructeur virtuel de la classe Noeud
+    int executer() override; // Exécute l'instruction Lire : si condition vraie on exécute la séquence
+
+  private:
+    vector<Noeud *> m_vectInst;
 };
 
 #endif /* ARBREABSTRAIT_H */

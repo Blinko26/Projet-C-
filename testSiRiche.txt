@@ -1,0 +1,51 @@
+# Fichier de test
+# Les lignes de commentaires commencent par #
+procedure principale()
+    i = 1;
+# test 1
+    si(i==1)
+        i=i+1;
+    finsi
+testSi1 = (i==2);
+# test 2
+    si(i==1)
+        i=i-1;
+    sinon
+        i=i+1;
+    finsi
+testSi2 = (i==3);
+# test 3
+    si(i==6)
+        i=i-1;
+    sinonsi(i==3)
+        i=i+1;
+    sinon
+        i=i+1;
+    finsi
+testSi3 = (i==4);
+
+# test 4
+    si(i==6)
+        i=i-1;
+    sinonsi(i==3)
+        i=i+1;
+    sinon
+        i=i+1;
+    finsi
+testSi4 = (i==5);
+
+# test 5
+    si(i==6)
+        i=i-1;
+    sinonsi(i==3)
+        i=i+1;
+    sinonsi(i==5)
+        i=i+1;
+    sinon
+        i=i+1;
+    finsi
+testSi5 = (i==6);
+
+
+finproc
+# Commentaire Final

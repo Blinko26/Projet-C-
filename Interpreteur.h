@@ -35,13 +35,17 @@ private:
                            //   <opBinaire> ::= + | - | *  | / | < | > | <= | >= | == | != | et | ou
     Noeud*  instSi();      //      <instSi> ::= si ( <expression> ) <seqInst> finsi
     
-    Noeud*  instTantQue(); // <instTantQue> ::=tantque( <expression> ) <seqInst> fintantque
+    Noeud*  instSiRiche(); // <instSiRiche> ::= si(<expression>) <seqInst> {sinonsi(<expression>) <seqInst> }[sinon <seqInst>]finsi
     
-    Noeud*  instRepeter(); // <instRepeter> ::=repeter <seqInst> jusqua( <expression> )
+    Noeud*  instTantQue(); // <instTantQue> ::= tantque( <expression> ) <seqInst> fintantque
     
-    Noeud*  instPour();    // <instPour>    ::=pour( [ <affectation> ] ; <expression> ;[ <affectation> ]) <seqInst> finpour
+    Noeud*  instRepeter(); // <instRepeter> ::= repeter <seqInst> jusqua( <expression> )
+    
+    Noeud*  instPour();    // <instPour>    ::= pour( [ <affectation> ] ; <expression> ;[ <affectation> ]) <seqInst> finpour
 
-    Noeud*  instEcrire();   // <instEcrire>  ::=ecrire( <expression> | <chaine> {, <expression> | <chaine> })
+    Noeud*  instEcrire();  // <instEcrire>  ::= ecrire( <expression> | <chaine> {, <expression> | <chaine> })
+    
+    Noeud*  instLire();    // <instLire>    ::= lire( <variable> {, <variable> })
     
     // outils pour simplifier l'analyse syntaxique
     void tester (const string & symboleAttendu) const;   // Si symbole courant != symboleAttendu, on lève une exception

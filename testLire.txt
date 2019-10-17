@@ -1,0 +1,6 @@
+# Fichier de test
+# Les lignes de commentaires commencent par #
+procedure principale()
+    lire(x);
+finproc
+# Commentaire Final

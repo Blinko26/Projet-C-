@@ -1,0 +1,28 @@
+# Fichier de test
+# Les lignes de commentaires commencent par #
+procedure principale()
+
+#test 1 : ecriture d'un entier
+    ecrire(2);
+#test 2 : ecriture d'une expression
+    ecrire(2+5);
+
+    i=5;
+#test 3 : ecriture d'une variable
+    ecrire(i);
+
+    j=8;
+#test 4 : ecriture d'une expression entre deux variables
+    ecrire(j+i);
+
+#test 5 : ecriture de deux variables
+    ecrire(i,j);
+#test 6 : ecriture d'une chaine
+    ecrire("Bonjour");
+#test 7 : ecriture d'une chaine et d'une variable
+    ecrire("i= ",i);
+
+#test 8 :
+    ecrire("i =",i,"j= ",j);
+finproc
+# Commentaire Final
