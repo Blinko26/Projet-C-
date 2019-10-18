@@ -1,6 +1,18 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
+#Test Lire 1 On rentre un int
+    ecrire("Entrez x :");
     lire(x);
+
+#Test Lire 2 On rentre deux valeurs
+   ecrire("Entrez y et k:");
+    lire(y,k);
+
+
+#Test Lire 3 On rentre 5 valeurs
+   ecrire("Entrez y,k,h,i,l :");
+    lire(y,k,h,i,l);
+
 finproc
 # Commentaire Final

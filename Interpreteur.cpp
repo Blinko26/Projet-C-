@@ -259,10 +259,14 @@ Noeud* Interpreteur::instLire() {
     vector<Noeud *> v_inst;
     testerEtAvancer("lire");
     testerEtAvancer("(");
-    v_inst.push_back(facteur());
+     Noeud* var = m_table.chercheAjoute(m_lecteur.getSymbole()); // La variable est ajoutée à la table et on la mémorise
+    m_lecteur.avancer();
+    v_inst.push_back(var);
     while (m_lecteur.getSymbole()!=")") {
         testerEtAvancer(",");
-        v_inst.push_back(facteur());
+        Noeud* var = m_table.chercheAjoute(m_lecteur.getSymbole()); // La variable est ajoutée à la table et on la mémorise
+        m_lecteur.avancer();
+        v_inst.push_back(var);
     }
     testerEtAvancer(")");
     testerEtAvancer(";");

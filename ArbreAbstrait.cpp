@@ -182,10 +182,12 @@ NoeudInstLire::NoeudInstLire(vector<Noeud *> vectInst)
 }
 
 int NoeudInstLire::executer() {
-    for(int i = 0;i<m_vectInst.size();i=i+1){
-        std::string x;
+    
+    for(auto var : m_vectInst){
+        int x;
         cin >> x;
-        }
+        ((SymboleValue*)var)->setValeur(x);       
+    }
     
     return 0;
 }
