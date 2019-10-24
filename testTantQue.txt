@@ -10,7 +10,7 @@ procedure principale()
 #test2
   testPasFait = 1;
   tantque(0)
-    testPasFait = 0;
+  testPasFait = 0;
   fintantque
     
 finproc

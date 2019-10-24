@@ -19,5 +19,12 @@ procedure principale()
         k=k+1;
     finpour
     testPour3 = (k==j);
+
+#test4
+    k=0;
+    pour(;j<10;)
+        k=k+1;
+    finpour
+    testPour4 = (k==j);
 finproc
 # Commentaire Final

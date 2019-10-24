@@ -17,11 +17,15 @@ void Interpreteur::tester(const string & symboleAttendu) const {
   // Teste si le symbole courant est égal au symboleAttendu... Si non, lève une exception
   static char messageWhat[256];
   if (m_lecteur.getSymbole() != symboleAttendu) {
-    sprintf(messageWhat,
+      
+    /*sprintf(messageWhat,
             "Ligne %d, Colonne %d - Erreur de syntaxe - Symbole attendu : %s - Symbole trouvé : %s",
             m_lecteur.getLigne(), m_lecteur.getColonne(),
             symboleAttendu.c_str(), m_lecteur.getSymbole().getChaine().c_str());
-    throw SyntaxeException(messageWhat);
+    throw SyntaxeException(messageWhat);*/
+    
+      erreur("Message erreur");
+      
   }
 }
 
@@ -38,7 +42,23 @@ void Interpreteur::erreur(const string & message) const {
   sprintf(messageWhat,
           "Ligne %d, Colonne %d - Erreur de syntaxe - %s - Symbole trouvé : %s",
           m_lecteur.getLigne(), m_lecteur.getColonne(), message.c_str(), m_lecteur.getSymbole().getChaine().c_str());
+          
   throw SyntaxeException(messageWhat);
+}
+
+void Interpreteur::traduitEnCPP(ostream & cout,unsigned int indentation)const{  
+    cout << setw(4*indentation)<<""<<"int main() {"<< endl; // Début d’un programme C++
+    // Ecrire en C++ la déclaration des variables présentes dans le programme... 
+    // ... variables dont on retrouvera le nom en parcourant la table des symboles ! 
+    // Par exemple, si le programme contient i,j,k, il faudra écrire : int i; int j; int k; ...   
+    for (int i = 0;i < m_table.getTaille();i++){
+        if(m_table[i]=="<VARIABLE>"){
+            cout<<setw(4*(indentation+1))<<""<<"int"<<" "<<m_table[i].getChaine()<<";"<<endl;
+        }
+    }
+    getArbre()->traduitEnCPP(cout,indentation+1);// lance l'opération traduitEnCPP sur la racine  
+    cout << setw(4*(indentation+1))<<""<<"return 0;"<< endl ;   
+    cout << setw(4*indentation)<<"}" << endl ; // Fin d’un programme C++
 }
 
 Noeud* Interpreteur::programme() {
@@ -66,29 +86,30 @@ Noeud* Interpreteur::seqInst() {
 
 Noeud* Interpreteur::inst() {
   // <inst> ::= <affectation>  ; | <instSi>
-  if (m_lecteur.getSymbole() == "<VARIABLE>") {
-    Noeud *affect = affectation();
-    testerEtAvancer(";");
-    return affect;
-  }
-  else if (m_lecteur.getSymbole() == "si")
-    return instSiRiche();
-  else if (m_lecteur.getSymbole() == "tantque")
-    return instTantQue();
-  else if (m_lecteur.getSymbole() == "repeter"){
-    return instRepeter();
-  }
-  else if (m_lecteur.getSymbole() == "pour")
-    return instPour(); 
-  else if (m_lecteur.getSymbole() == "ecrire")
-    return instEcrire();
-  else if (m_lecteur.getSymbole() == "lire")
-    return instLire();
-  // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
-  else {
-      erreur("Instruction incorrecte");
-      return nullptr;
-  }
+    
+    if (m_lecteur.getSymbole() == "<VARIABLE>") {
+      Noeud *affect = affectation();
+      testerEtAvancer(";");
+      return affect;
+    }
+    else if (m_lecteur.getSymbole() == "si")
+      return instSiRiche();
+    else if (m_lecteur.getSymbole() == "tantque")
+      return instTantQue();
+    else if (m_lecteur.getSymbole() == "repeter"){
+      return instRepeter();
+    }
+    else if (m_lecteur.getSymbole() == "pour")
+      return instPour(); 
+    else if (m_lecteur.getSymbole() == "ecrire")
+      return instEcrire();
+    else if (m_lecteur.getSymbole() == "lire")
+      return instLire();
+    // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
+    else {
+        erreur("Erreur: Instruction");
+        return nullptr;
+    }
 }
 
 Noeud* Interpreteur::affectation() {
