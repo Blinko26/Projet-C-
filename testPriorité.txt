@@ -1,0 +1,37 @@
+# Fichier de test
+# Les lignes de commentaires commencent par #
+procedure principale()
+
+    i = 4*2 + 1;
+    ecrire("On attend i = 9 on a : i = ",i);
+
+    i = 9 + 4*2 + 1;
+    ecrire("On attend i = 18 on a : i = ",i);
+
+    i = 4*2 - 1;
+    ecrire("On attend i = 7 on a : i = ",i);
+
+    j =3;
+    k = 2;
+    i = j==3 ou k==2 et j==8 ;
+    ecrire("On attend i = 1 on a : i = ",i);
+    
+    j=3;
+    k=2;
+    i = j>k+2;
+    ecrire("On attend i = 0 on a : i = ",i);
+
+    j=3;
+    k=4;
+    i = j>=k-1;
+    ecrire("On attend i = 1 on a : i = ",i);
+
+    j=1;
+    h=2;
+    k=19;
+    r=5;
+    i = j<4-1 et k!=8+4*2-5 ou h>r*2 et r-5 == 0;
+    ecrire("On attend i = 1 on a : i = ",i);
+
+finproc
+# Commentaire Final

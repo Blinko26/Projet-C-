@@ -90,8 +90,20 @@ int NoeudOperateurBinaire::executer() {
   return valeur; // On retourne la valeur calculée
 }
 
-void NoeudOperateurBinaire::traduitEnCPP(ostream & cout,unsigned int indentation) const{  
-    cout << ((SymboleValue*)m_operandeGauche)->getChaine() << m_operateur.getChaine() << ((SymboleValue*)m_operandeDroit)->getChaine();
+void NoeudOperateurBinaire::traduitEnCPP(ostream & cout,unsigned int indentation) const{
+    
+    m_operandeGauche->traduitEnCPP(cout,0);
+    if(m_operateur == "ou" || m_operateur == "et"){
+        if(m_operateur == "ou" ){
+            cout << "||";
+        }
+        else if (m_operateur == "et"){
+            cout << "&&";
+        }
+    }else {
+        cout << m_operateur.getChaine();
+    }
+    m_operandeDroit->traduitEnCPP(cout,0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -143,7 +155,7 @@ void NoeudInstSiRiche::traduitEnCPP(ostream & cout,unsigned int indentation) con
 
     cout << setw(4*indentation)<<""<<"if (";// Ecrit "if (" avec un décalage de 4*indentation espaces   
     for(int i = 0;i<m_vectInst.size();i=i+2){
-        if(m_vectInst[i+1]!=NULL){
+        if(i != m_vectInst.size()-1){
             if(i!=0){
                 cout << setw(4*indentation)<<""<<"else if (";// Ecrit "else if (" avec un décalage de 8*indentation espaces
             }
@@ -153,9 +165,9 @@ void NoeudInstSiRiche::traduitEnCPP(ostream & cout,unsigned int indentation) con
             cout << setw(4*indentation)<<""<<"}"<< endl;// Ecrit "}" avec l'indentation initiale et passe à la ligne 
         }
         else{
-            cout << setw(4*indentation)<<""<<"else {";// Ecrit "else if (" avec un décalage de 8*indentation espaces
+            cout << setw(4*indentation)<<""<<"else {"<< endl;// Ecrit "else if (" avec un décalage de 8*indentation espaces
             m_vectInst[i]->traduitEnCPP(cout, indentation+1);
-            cout << "}";
+            cout << setw(4*indentation)<<""<< "}"<<endl;
         }
     }
 }
