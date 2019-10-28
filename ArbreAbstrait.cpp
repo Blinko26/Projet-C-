@@ -317,3 +317,38 @@ void NoeudInstLire::traduitEnCPP(ostream & cout,unsigned int indentation) const{
     cout << "; \n";
     
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudSelon
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstSelon::NoeudInstSelon(Noeud* variable, vector<Noeud *> vectInst, vector<Noeud *> vectCondition)
+:m_variable(variable), m_vectInst(vectInst), m_vectCondition(vectCondition) {
+}
+
+int NoeudInstSelon::executer() {
+    int i=0;
+    for(auto exp : m_vectCondition){
+        if(exp==NULL){
+            m_vectInst.at(i)->executer();
+            break;
+        } else if (m_variable->executer()==exp->executer()){
+            m_vectInst.at(i)->executer();
+            break;
+        }
+        i++;
+    }
+ 
+    return 0;
+}
+
+void NoeudInstSelon::traduitEnCPP(ostream & cout,unsigned int indentation) const{    
+    /*cout << setw(4*indentation)<<""<<"switch(";
+    m_variable->traduitEnCPPPour();
+    cout << ")"<<endl;
+    cout << setw(4*indentation)<<""<< "{";
+    
+    
+    cout << "; \n";*/
+    
+}

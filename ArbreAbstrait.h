@@ -12,6 +12,7 @@ using namespace std;
 #include "Symbole.h"
 #include "Exceptions.h"
 
+
 ////////////////////////////////////////////////////////////////////////////////
 class Noeud {
 // Classe abstraite dont dériveront toutes les classes servant à représenter l'arbre abstrait
@@ -179,6 +180,23 @@ class NoeudInstLire: public Noeud {
 
   private:
     vector<Noeud *> m_vectInst;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+class NoeudInstSelon: public Noeud {
+// Classe pour représenter un noeud "instruction Selon"
+//  et ses 2 fils : la condition du Selon et la séquence d'instruction associée
+  public:
+    NoeudInstSelon(Noeud* variable, vector<Noeud *> vectInst, vector<Noeud *> vectCondition);
+     // Construit une "instruction Selon" avec sa condition et sa séquence d'instruction
+   ~NoeudInstSelon() {}         // A cause du destructeur virtuel de la classe Noeud
+    int executer() override; // Exécute l'instruction Selon : si condition vraie on exécute la séquence
+    void traduitEnCPP(ostream & cout,unsigned int indentation) const;
+
+  private:
+    Noeud* m_variable; 
+    vector<Noeud *> m_vectInst;
+    vector<Noeud *> m_vectCondition;
 };
 
 #endif /* ARBREABSTRAIT_H */

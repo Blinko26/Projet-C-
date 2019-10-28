@@ -54,6 +54,8 @@ private:
     
     Noeud*  instLire();    // <instLire>    ::= lire( <variable> {, <variable> })
     
+    Noeud* instSelon();    // <instSelon>     :: = selon(<variable>) [cas <expression> : <seqInst>] dafaut : <seqInst> finselon
+    
     // outils pour simplifier l'analyse syntaxique
     void tester (const string & symboleAttendu) const;   // Si symbole courant != symboleAttendu, on lève une exception
     void testerEtAvancer(const string & symboleAttendu); // Si symbole courant != symboleAttendu, on lève une exception, sinon on avance

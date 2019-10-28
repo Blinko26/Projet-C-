@@ -18,13 +18,13 @@ void Interpreteur::tester(const string & symboleAttendu) const {
   static char messageWhat[256];
   if (m_lecteur.getSymbole() != symboleAttendu) {
       
-    /*sprintf(messageWhat,
+    sprintf(messageWhat,
             "Ligne %d, Colonne %d - Erreur de syntaxe - Symbole attendu : %s - Symbole trouvé : %s",
             m_lecteur.getLigne(), m_lecteur.getColonne(),
             symboleAttendu.c_str(), m_lecteur.getSymbole().getChaine().c_str());
-    throw SyntaxeException(messageWhat);*/
+    throw SyntaxeException(messageWhat);
     
-      erreur("Message erreur");
+    
       
   }
 }
@@ -78,7 +78,7 @@ Noeud* Interpreteur::seqInst() {
   NoeudSeqInst* sequence = new NoeudSeqInst();
   do {
     sequence->ajoute(inst());
-  } while (m_lecteur.getSymbole() == "<VARIABLE>" || m_lecteur.getSymbole() == "si" || m_lecteur.getSymbole() == "tantque" || m_lecteur.getSymbole() == "repeter" || m_lecteur.getSymbole() == "pour" || m_lecteur.getSymbole() == "ecrire" || m_lecteur.getSymbole() == "lire");
+  } while (m_lecteur.getSymbole() == "<VARIABLE>" || m_lecteur.getSymbole() == "si" || m_lecteur.getSymbole() == "tantque" || m_lecteur.getSymbole() == "repeter" || m_lecteur.getSymbole() == "pour" || m_lecteur.getSymbole() == "ecrire" || m_lecteur.getSymbole() == "lire" || m_lecteur.getSymbole() == "selon");
   // Tant que le symbole courant est un début possible d'instruction...
   // Il faut compléter cette condition chaque fois qu'on rajoute une nouvelle instruction
   return sequence;
@@ -105,6 +105,8 @@ Noeud* Interpreteur::inst() {
       return instEcrire();
     else if (m_lecteur.getSymbole() == "lire")
       return instLire();
+    else if (m_lecteur.getSymbole() == "selon")
+      return instSelon();
     // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
     else {
         erreur("Erreur: Instruction");
@@ -346,4 +348,49 @@ Noeud* Interpreteur::instLire() {
     testerEtAvancer(";");
     
     return new NoeudInstLire(v_inst);
+}
+
+Noeud* Interpreteur::instSelon() {
+    // <instSelon>     :: = selon(<variable>) [cas <expression> : <seqInst>] dafaut : <seqInst> finselon
+    Noeud* exp;
+    Noeud* instruction;
+    Noeud* var;
+    vector<Noeud *> v_inst;
+    vector<Noeud *> v_condition;
+    
+    testerEtAvancer("selon");
+    testerEtAvancer("(");
+    
+    if (m_lecteur.getSymbole() == "<VARIABLE>") {
+        var = m_table.chercheAjoute(m_lecteur.getSymbole()); // La variable est ajoutée à la table et on la mémorise
+        m_lecteur.avancer();
+    }
+    
+    testerEtAvancer(")");
+    testerEtAvancer("cas");
+    exp = expression();
+    v_condition.push_back(exp);
+    testerEtAvancer(":");
+    instruction = seqInst();
+    v_inst.push_back(instruction);
+    
+    while(m_lecteur.getSymbole() == "cas"){
+        testerEtAvancer("cas");
+        exp = expression();
+        v_condition.push_back(exp);
+        testerEtAvancer(":");
+        instruction = seqInst();
+        v_inst.push_back(instruction);
+    }
+    
+    testerEtAvancer("defaut");
+    exp = NULL;
+    v_condition.push_back(exp);
+    testerEtAvancer(":");
+    instruction = seqInst();
+    v_inst.push_back(instruction);
+    
+    testerEtAvancer("finselon");
+
+    return new NoeudInstSelon(var,v_inst, v_condition);
 }
