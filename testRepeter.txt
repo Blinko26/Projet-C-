@@ -1,16 +1,20 @@
 # Fichier de test de l'instruction repeter
+# Resultats attendus :
+# testRepeter1 = 1
+# testRepeter2 = 1
 # Les lignes de commentaires commencent par #
 procedure principale()
-#test1
+#test1 : on teste le repeter avec une variable i
   i = 0;
   repeter
-    i = i + 1;
-  jusqua(i==5);
-    testRepeter1 = (i==5);
-#test2
+    i = i + 1;                  
+  jusqua(i==5);                 # tant que i !=5, i = i+1
+    testRepeter1 = (i==5);      # Vrai, testRepeter1 = 1;
+
+#test2 : on teste le repeter sans utiliser de variable autre que notre test
     testRepeter2 = 0;
   repeter
     testRepeter2 = 1;
-   jusqua(1);
+   jusqua(1);                   # dès que vrai, testRepeter2 = 1
 finproc
 # Commentaire Final
