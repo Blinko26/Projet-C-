@@ -1,28 +1,30 @@
 # Fichier de test
+# test du Ecrire 
 # Les lignes de commentaires commencent par #
 procedure principale()
 
 #test 1 : ecriture d'un entier
-    ecrire(2);
+    ecrire(2);                          # Retourne 2
 #test 2 : ecriture d'une expression
-    ecrire(2+5);
+    ecrire(2+5);                        # Retourne 7
 
-    i=5;
 #test 3 : ecriture d'une variable
-    ecrire(i);
+    i=5;
+
+    ecrire(i);                          # Retourne 5
 
     j=8;
 #test 4 : ecriture d'une expression entre deux variables
-    ecrire(j+i);
+    ecrire(j+i);                        # Retourne 13 (8+5)
 
 #test 5 : ecriture de deux variables
-    ecrire(i,j);
+    ecrire(i,j);                        # Retourne 5,8
 #test 6 : ecriture d'une chaine
-    ecrire("Bonjour");
+    ecrire("Bonjour");                  # Retourne Bonjour
 #test 7 : ecriture d'une chaine et d'une variable
-    ecrire("i= ",i);
+    ecrire("i= ",i);                    # Retourne i = 5
 
 #test 8 :
-    ecrire("i =",i,"j= ",j);
+    ecrire("i =",i,"j= ",j);            # Retourne i = 5, j = 8
 finproc
 # Commentaire Final

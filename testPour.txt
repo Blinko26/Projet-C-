@@ -1,30 +1,43 @@
-# Fichier de test de l'instruction tantque
+# Fichier de test de l'instruction pour
+# Test du Pour
+# Résultats attendus :
+# testPour1 = 1
+# testPour2 = 1
+# testPour3 = 1
+# testPour4 = 1
 # Les lignes de commentaires commencent par #
 procedure principale()
-#test1
+#test1 : on essaye un pour avec chaque instruction
     j = 0;
-    pour(i=0;i<10;i=i+1)
-        j=j+1;
+    pour(i=0;i<10;i=i+1)                    # i prend 10 valeurs allant de 0 à 9
+        j=j+1;                              # j = 10
     finpour
-    testPour1 = (j==i);
-#test2
+    testPour1 = (j==i);                     # Vrai, testPour1 = 1;
+    ecrire("testPour1 = ", testPour1);      # Retourne testPour1 = 1
+
+#test2 : on essaye un pour sans entrer d'incrémentation
     k=1;
-    pour(j=0;j!=0;)
+    pour(j=0;j!=0;)                         # j est initialisé à 0, on reste dans la boucle tant que j est différent de 0, par défaut il n'y a pas d'incrémentation
         k=0;
     finpour
-    testPour2 = (k==1);
-#test3
-    k=0;
-    pour(;j<10;j=j+1)
-        k=k+1;
-    finpour
-    testPour3 = (k==j);
+    testPour2 = (k==1);                     # Vrai, testPour2 = 1
+    ecrire("testPour2 = ", testPour2);      # Retourne testPour2 = 1;
 
-#test4
+#test3 : on teste un pour sans entrer de valeur initiale
     k=0;
-    pour(;j<10;)
-        k=k+1;
+    pour(;j<10;j=j+1)                       # on reste dans la boucle tant que j est inférieur à 10, on incrémente de 1, par défaut j = 0
+        k=k+1;                              # k = 10;
     finpour
-    testPour4 = (k==j);
+    testPour3 = (k==j);                     # Vrai, testPour3 = 1;
+    ecrire("testPour3 = ", testPour3);      # Retourne testPour3 = 1;
+
+#test4 : on teste un pour sans valeur initiale ni incrmentation
+    k=0;
+    pour(;j<10;)                            # Par défaut, j est initialisé à 10 (précédente valeur de j), et il n'y a pas d'incrémentation
+        k=k+1;                              # On ne rentre pas dans la boucle, par conséquent k = 0
+    finpour
+    testPour4 = (k==0);                     # Vrai, testPour4 = 1;
+    ecrire("testPour4 = ", testPour4);      # Retourne testPour4 = 1;
+
 finproc
 # Commentaire Final
