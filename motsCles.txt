@@ -13,7 +13,11 @@ repeter
 jusqua
 lire
 ecrire
+ecrireligne
 selon
+cas
+defaut
+finselon
 ;
 ,
 =

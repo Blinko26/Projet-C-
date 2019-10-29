@@ -51,7 +51,8 @@ private:
     Noeud*  instPour();    // <instPour>    ::= pour( [ <affectation> ] ; <expression> ;[ <affectation> ]) <seqInst> finpour
 
     Noeud*  instEcrire();  // <instEcrire>  ::= ecrire( <expression> | <chaine> {, <expression> | <chaine> })
-    
+    Noeud*  instEcrireLigne();  // <instEcrire>  ::= ecrire( <expression> | <chaine> {, <expression> | <chaine> })
+
     Noeud*  instLire();    // <instLire>    ::= lire( <variable> {, <variable> })
     
     Noeud* instSelon();    // <instSelon>     :: = selon(<variable>) [cas <expression> : <seqInst>] dafaut : <seqInst> finselon

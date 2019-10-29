@@ -267,7 +267,7 @@ int NoeudInstEcrire::executer() {
             cout << var->executer(); // Sinon, on donne la valeur de la variable
         }
     }
-    cout << "\n";
+
     return 0;
 }
 
@@ -284,10 +284,45 @@ void NoeudInstEcrire::traduitEnCPP(ostream & cout,unsigned int indentation) cons
         }
 
     }
-    cout<<"<< endl;"<<endl; // On écrit "<< endl;" à la suite
+    cout<<";"<<endl; // On écrit "<< endl;" à la suite
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// NoeudEcrireLigne
+////////////////////////////////////////////////////////////////////////////////
 
+NoeudInstEcrireLigne::NoeudInstEcrireLigne(vector<Noeud *> vectInst)
+:m_vectInst(vectInst) { // Création d'un NoeudInstEcrire avec un vecteur d'instructions
+}
+
+int NoeudInstEcrireLigne::executer() {
+    for(auto var : m_vectInst){ // On parcourt le vecteur
+        if(typeid(*var)==typeid(SymboleValue) &&  *((SymboleValue*)var)== "<CHAINE>" ){
+            cout<< ((SymboleValue*)var)->getChaine(); // Si la variable entrée est une chaîne de caractère, on l'écrit
+        }
+        else{
+            cout << var->executer(); // Sinon, on donne la valeur de la variable
+        }
+    }
+    cout << "\n";
+    return 0;
+}
+
+void NoeudInstEcrireLigne::traduitEnCPP(ostream & cout,unsigned int indentation) const{    
+    
+    cout << setw(4*indentation)<<""<<"cout"; // On écrit "cout" avec une décalage de 4*indentation espaces
+    for(int i=0; i<m_vectInst.size(); i++){
+        cout << "<<";
+        if(typeid(*m_vectInst[i])==typeid(SymboleValue) &&  *((SymboleValue*)m_vectInst[i])== "<CHAINE>" ){
+            cout<< ((SymboleValue*)m_vectInst[i])->getChaine(); // Si la variable est une chaîne, on l'écrit 
+        }
+        else{
+           m_vectInst[i]->traduitEnCPP(cout,indentation); // Sinon, on écrit le nom de la variable
+        }
+
+    }
+    cout<<"<< endl;"<<endl; // On écrit "<< endl;" à la suite
+}
 ////////////////////////////////////////////////////////////////////////////////
 // NoeudLire
 ////////////////////////////////////////////////////////////////////////////////

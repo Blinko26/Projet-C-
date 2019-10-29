@@ -8,10 +8,8 @@ procedure principale()
                 i=i+1;
         defaut :
                 i=i+2;
-        finselon
+    finselon
 
         
-        
-    finselon
 finproc
 # Commentaire Final

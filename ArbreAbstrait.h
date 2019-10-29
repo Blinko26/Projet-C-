@@ -168,6 +168,21 @@ class NoeudInstEcrire: public Noeud {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+class NoeudInstEcrireLigne: public Noeud {
+// Classe pour représenter un noeud "instruction EcrireLigne"
+//  et ses 2 fils : la condition du EcrireLigne et la séquence d'instruction associée
+  public:
+    NoeudInstEcrireLigne(vector<Noeud *> vectInst);
+     // Construit une "instruction EcrireLigne" avec sa condition et sa séquence d'instruction
+   ~NoeudInstEcrireLigne() {}         // A cause du destructeur virtuel de la classe Noeud
+    int executer() override; // Exécute l'instruction EcrireLigne : si condition vraie on exécute la séquence
+    void traduitEnCPP(ostream & cout,unsigned int indentation) const; // Traduit l'instruction "EcrireLigne" en CPP
+
+  private:
+    vector<Noeud *> m_vectInst;
+};
+
+////////////////////////////////////////////////////////////////////////////////
 class NoeudInstLire: public Noeud {
 // Classe pour représenter un noeud "instruction Lire"
 //  et ses 2 fils : la condition du Lire et la séquence d'instruction associée

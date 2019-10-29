@@ -4,27 +4,29 @@
 procedure principale()
 
 #test 1 : ecriture d'un entier
-    ecrire(2);                          # Retourne 2
+    ecrireligne(2);                          # Retourne 2
 #test 2 : ecriture d'une expression
-    ecrire(2+5);                        # Retourne 7
+    ecrireligne(2+5);                        # Retourne 7
 
 #test 3 : ecriture d'une variable
     i=5;
 
-    ecrire(i);                          # Retourne 5
+    ecrireligne(i);                          # Retourne 5
 
     j=8;
 #test 4 : ecriture d'une expression entre deux variables
-    ecrire(j+i);                        # Retourne 13 (8+5)
+    ecrireligne(j+i);                        # Retourne 13 (8+5)
 
 #test 5 : ecriture de deux variables
-    ecrire(i,j);                        # Retourne 5,8
+    ecrireligne(i,j);                        # Retourne 5,8
 #test 6 : ecriture d'une chaine
-    ecrire("Bonjour");                  # Retourne Bonjour
+    ecrireligne("Bonjour");                  # Retourne Bonjour
 #test 7 : ecriture d'une chaine et d'une variable
-    ecrire("i= ",i);                    # Retourne i = 5
+    ecrireligne("i= ",i);                    # Retourne i = 5
 
 #test 8 :
-    ecrire("i =",i,"j= ",j);            # Retourne i = 5, j = 8
+    ecrireligne("i =",i,"j= ",j);            # Retourne i = 5, j = 8
+
+#test 9
 finproc
 # Commentaire Final
