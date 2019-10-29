@@ -18,7 +18,7 @@ int SymboleValue::executer() {
 }
 
 void SymboleValue::traduitEnCPP(ostream & cout,unsigned int indentation) const{
-    cout << this->getChaine();
+    cout << this->getChaine(); // On retourne en CPP le nom du SymboleValue
 }
 
 ostream & operator<<(ostream & cout, const SymboleValue & symbole) {
