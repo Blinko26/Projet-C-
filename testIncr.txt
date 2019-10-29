@@ -25,5 +25,15 @@ procedure principale()
 
     ecrire("i=",i);
 
+    #Test Incrémentation et décrémentation
+
+    j=1;
+    j++;
+    ecrire("On doit trouver j = 2 et j =",j);
+
+    j=1;
+    j--;
+    ecrire("On doit trouver j = 0 et j =",j);
+
 finproc
 # Commentaire Final

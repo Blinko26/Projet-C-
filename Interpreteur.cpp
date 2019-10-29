@@ -124,15 +124,30 @@ Noeud* Interpreteur::affectation() {
   Symbole operateur = m_lecteur.getSymbole();
   Noeud* exp;
   if(operateur=="+" || operateur =="-" || operateur =="*" || operateur =="/"){
-      m_lecteur.avancer();
-      testerEtAvancer("=");
-      Noeud* op = m_table.chercheAjoute(m_lecteur.getSymbole());
-      m_lecteur.avancer();
-      exp = new NoeudOperateurBinaire(operateur,var , op); // Et on construuit un noeud opérateur binaire
+        m_lecteur.avancer();
+        testerEtAvancer("=");
+        Noeud* op = m_table.chercheAjoute(m_lecteur.getSymbole());
+        m_lecteur.avancer();
+        exp = new NoeudOperateurBinaire(operateur,var , op); // Et on construit un noeud opérateur binaire
+  }
+  else if(operateur=="++" || operateur =="--"){
+    m_lecteur.avancer();
+    Symbole incr("1");
+    SymboleValue incr1 = incr;
+    incr1.setValeur(1);
+    Noeud* op = m_table.chercheAjoute(incr1);
+    if(operateur=="++"){
+        Symbole oper("+");
+        exp = new NoeudOperateurBinaire(oper,var , op); // Et on construit un noeud opérateur binaire
+    }
+    else if(operateur == "--"){
+        Symbole oper("-");
+        exp = new NoeudOperateurBinaire(oper,var , op); // Et on construit un noeud opérateur binaire
+    }
   }
   else{
       testerEtAvancer("=");
-        exp = expression();             // On mémorise l'expression trouvée
+      exp = expression();             // On mémorise l'expression trouvée
   }
   return new NoeudAffectation(var, exp); // On renvoie un noeud affectation
 }
