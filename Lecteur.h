@@ -11,7 +11,7 @@ using namespace std;
 
 class LecteurCaractere {
 public:
-    LecteurCaractere(ifstream & fichier); // Construit le lecteur pour parcourir fichier
+    LecteurCaractere(ifstream & fichier); // Construit le lecteur pour parcourir le fichier
 
     inline char getCaractere() const {
         return m_caractere;

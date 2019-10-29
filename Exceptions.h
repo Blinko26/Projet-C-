@@ -19,6 +19,7 @@ public:
     }
 };
 
+// Exception levée si le fichier choisi ne s'est pas ouvert correctement
 class FichierException : public InterpreteurException {
 public:
     const char * what() const throw() override {
@@ -26,6 +27,7 @@ public:
     }
 };
 
+// Exception levée s'il y a une faute de syntaxe dans l'écriture d'une instruction
 class SyntaxeException : public InterpreteurException {
 public:
     SyntaxeException(const char * message = NULL) : m_message(message) {}
@@ -36,7 +38,7 @@ private :
     const char* m_message;
 };
 
-
+// Exception levée si la valeur entrée n'est pas correcte (exemple : float)
 class IndefiniException : public InterpreteurException {
 public:
     const char * what() const throw() override {
@@ -44,7 +46,7 @@ public:
     }
 };
 
-
+// Exception levée si on divise une valeur par 0
 class DivParZeroException : public InterpreteurException {
 public:
     const char * what() const throw() override {
@@ -52,6 +54,7 @@ public:
     }
 };
 
+// Exception levée si une opération interdite est utilisée
 class OperationInterditeException : public InterpreteurException {
 public:
     const char * what() const throw() override {
