@@ -119,8 +119,21 @@ Noeud* Interpreteur::affectation() {
   tester("<VARIABLE>");
   Noeud* var = m_table.chercheAjoute(m_lecteur.getSymbole()); // La variable est ajoutée à la table et on la mémorise
   m_lecteur.avancer();
-  testerEtAvancer("=");
-  Noeud* exp = expression();             // On mémorise l'expression trouvée
+  
+  //ajout pour l'incrémentation
+  Symbole operateur = m_lecteur.getSymbole();
+  Noeud* exp;
+  if(operateur=="+" || operateur =="-" || operateur =="*" || operateur =="/"){
+      m_lecteur.avancer();
+      testerEtAvancer("=");
+      Noeud* op = m_table.chercheAjoute(m_lecteur.getSymbole());
+      m_lecteur.avancer();
+      exp = new NoeudOperateurBinaire(operateur,var , op); // Et on construuit un noeud opérateur binaire
+  }
+  else{
+      testerEtAvancer("=");
+        exp = expression();             // On mémorise l'expression trouvée
+  }
   return new NoeudAffectation(var, exp); // On renvoie un noeud affectation
 }
 

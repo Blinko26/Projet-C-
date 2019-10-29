@@ -19,6 +19,7 @@
       <itemPath>programme.txt</itemPath>
       <itemPath>testEcrire.txt</itemPath>
       <itemPath>testErreur.txt</itemPath>
+      <itemPath>testIncr.txt</itemPath>
       <itemPath>testLire.txt</itemPath>
       <itemPath>testPour.txt</itemPath>
       <itemPath>testPriorité.txt</itemPath>
@@ -122,6 +123,8 @@
       </item>
       <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="testIncr.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="testLire.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="testPour.txt" ex="false" tool="3" flavor2="0">
@@ -212,6 +215,8 @@
       <item path="testEcrire.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testIncr.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="testLire.txt" ex="false" tool="3" flavor2="0">
       </item>
