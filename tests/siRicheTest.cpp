@@ -11,8 +11,9 @@
  * Created on Oct 28, 2019, 3:29:38 PM
  */
 
-#include "siRicheTest.h"
-#include "ArbreAbstrait.h"
+#include "../tests/siRicheTest.h"
+#include "../ArbreAbstrait.h"
+#include "../Interpreteur.h"
 
 
 CPPUNIT_TEST_SUITE_REGISTRATION(siRicheTest);
@@ -30,27 +31,54 @@ void siRicheTest::tearDown() {
 }
 
 void siRicheTest::testNoeudInstSiRiche() {
-    vector<Noeud*> vectInst;
-    NoeudInstSiRiche noeudInstSiRiche(vectInst);
-    CPPUNIT_ASSERT_MESSAGE("Construction du vecteur d'instructions correcte", noeudInstSiRiche(vectInst.size())=vectInst.size());
+    string nomFich;
+    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programme.txt";
+    ifstream fichier(nomFich.c_str());
+    Interpreteur interpreteur(fichier);
+    interpreteur.analyse();
+    
+    Noeud* arbre = interpreteur.getArbre();
+    
+    
+    
+    
+    
+    CPPUNIT_ASSERT(false);
 }
 
 void siRicheTest::testExecuter() {
-    int testSiRiche1 = 1;
-    NoeudInstSiRiche siRiche;
-    if (testSiRiche1==1) {
-        CPPUNIT_ASSERT_MESSAGE("La variable testSiRiche1 est bien égale à 1, on rentre dans la condition", true);
+    string nomFich;
+    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
+    ifstream fichier(nomFich.c_str());
+    if (fichier.fail()) throw FichierException();
+    Interpreteur interpreteur(fichier);
+    interpreteur.analyse();
+    
+    Noeud* arbre = interpreteur.getArbre(); //On interprète le fichier txt
+    
+    interpreteur.getArbre()->executer();
+    TableSymboles table = interpreteur.getTable();
+    for (int i= 0;i<table.getTaille();i++){
+        if (table[i].getChaine()=="testSi1" || table[i].getChaine()=="testSi2" || table[i].getChaine()=="testSi3" || table[i].getChaine()=="testSi4" || table[i].getChaine()=="testSi5"){
+            SymboleValue symbole = table[i];
+            int valeurS = symbole.executer();
+            CPPUNIT_ASSERT_EQUAL_MESSAGE("Le test est réussis",valeurS,1);
+        }
     }
-    int result = siRiche.executer();
 }
 
 void siRicheTest::testTraduitEnCPP() {
-    ostream& cout;
-    unsigned int indentation;
-    NoeudInstSiRiche noeudInstSiRiche;
-    noeudInstSiRiche.traduitEnCPP(cout, indentation);
-    if (true /*check result*/) {
-        CPPUNIT_ASSERT(false);
-    }
+        string nomFich;
+        nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
+        ifstream fichier(nomFich.c_str());
+        if (fichier.fail()) throw FichierException();
+        Interpreteur interpreteur(fichier);
+        interpreteur.analyse();
+        
+        string nomFich2;
+        nomFich2 = "../tradCPP.cpp";
+        ifstream fichier2(nomFich2.c_str());
+        if (fichier2.fail()) throw FichierException();
+     
 }
 
