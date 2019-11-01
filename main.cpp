@@ -26,7 +26,11 @@ int main(int argc, char* argv[]) {
         // Et on vérifie qu'il a fonctionné en regardant comment il a modifié la table des symboles
         cout << endl << "================ Table des symboles apres exécution : " << interpreteur.getTable();
         
-        interpreteur.traduitEnCPP(cout,0);
+        string fichCPP;
+        fichCPP = "tradCPP.txt";
+        fstream fichierCPP(fichCPP.c_str());
+        interpreteur.traduitEnCPP(fichierCPP,0);
+        
     } catch (InterpreteurException & e) {
         cout << e.what() << endl;
     }

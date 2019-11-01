@@ -5,6 +5,7 @@
 # Les lignes de commentaires commencent par #
 procedure principale()
   i = 12+3;                 # i = 15
+  k = 89/0;
   si (i>14)                 # 15>14, Rentre dans le si
     i=1;                    # i = 1
   finsi

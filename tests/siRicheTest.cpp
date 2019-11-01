@@ -32,19 +32,20 @@ void siRicheTest::tearDown() {
 
 void siRicheTest::testNoeudInstSiRiche() {
     string nomFich;
-    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programme.txt";
+    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
     ifstream fichier(nomFich.c_str());
     Interpreteur interpreteur(fichier);
-    interpreteur.analyse();
+    CPPUNIT_ASSERT_NO_THROW(interpreteur.analyse());
+        
+    CPPUNIT_ASSERT_NO_THROW_MESSAGE("Instruction Interprétation problème",interpreteur.getArbre());
     
-    Noeud* arbre = interpreteur.getArbre();
-    
-    
-    
-    
-    
-    CPPUNIT_ASSERT(false);
-}
+    string nomFich2;
+    nomFich2 = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programmeAvecErreur.txt";
+    ifstream fichier2(nomFich2.c_str());
+    Interpreteur interpreteur2(fichier);
+    CPPUNIT_ASSERT_THROW(interpreteur2.analyse(),InterpreteurException);
+
+    }
 
 void siRicheTest::testExecuter() {
     string nomFich;
@@ -56,7 +57,7 @@ void siRicheTest::testExecuter() {
     
     Noeud* arbre = interpreteur.getArbre(); //On interprète le fichier txt
     
-    interpreteur.getArbre()->executer();
+    CPPUNIT_ASSERT_NO_THROW(interpreteur.getArbre()->executer());
     TableSymboles table = interpreteur.getTable();
     for (int i= 0;i<table.getTaille();i++){
         if (table[i].getChaine()=="testSi1" || table[i].getChaine()=="testSi2" || table[i].getChaine()=="testSi3" || table[i].getChaine()=="testSi4" || table[i].getChaine()=="testSi5"){
@@ -65,6 +66,17 @@ void siRicheTest::testExecuter() {
             CPPUNIT_ASSERT_EQUAL_MESSAGE("Le test est réussis",valeurS,1);
         }
     }
+    
+    string nomFich2;
+    nomFich2 = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programmeAvecErreurExec.txt";
+    ifstream fichier2(nomFich2.c_str());
+    if (fichier2.fail()) throw FichierException();
+    Interpreteur interpreteur2(fichier2);
+    interpreteur2.analyse();
+        
+    CPPUNIT_ASSERT_THROW(interpreteur2.getArbre()->executer(),InterpreteurException);
+    
+    
 }
 
 void siRicheTest::testTraduitEnCPP() {
@@ -75,10 +87,11 @@ void siRicheTest::testTraduitEnCPP() {
         Interpreteur interpreteur(fichier);
         interpreteur.analyse();
         
-        string nomFich2;
-        nomFich2 = "../tradCPP.cpp";
-        ifstream fichier2(nomFich2.c_str());
-        if (fichier2.fail()) throw FichierException();
+        string fichCPP;
+        fichCPP = "tradCPP.txt";
+        fstream fichierCPP(fichCPP.c_str());
+        
+        CPPUNIT_ASSERT_NO_THROW(interpreteur.traduitEnCPP(fichierCPP,0));
      
 }
 

@@ -1,0 +1,59 @@
+int main() {
+    int i;
+    int testSi1;
+    int testSi2;
+    int testSi3;
+    int testSi4;
+    int testSi5;
+    i = 1;
+    if (i==1) {
+        i = i+1;
+    }
+    testSi1 = i==2;
+    cout<<"testSi1 = "<<testSi1;
+    if (i==1) {
+        i = i-1;
+    }
+    else {
+        i = i+1;
+    }
+    testSi2 = i==3;
+    cout<<"testSi2 = "<<testSi2;
+    if (i==6) {
+        i = i-1;
+    }
+    else if (i==3) {
+        i = i+1;
+    }
+    else {
+        i = i+1;
+    }
+    testSi3 = i==4;
+    cout<<"testSi3 = "<<testSi3;
+    if (i==6) {
+        i = i-1;
+    }
+    else if (i==3) {
+        i = i+1;
+    }
+    else {
+        i = i+1;
+    }
+    testSi4 = i==5;
+    cout<<"testSi4 = "<<testSi4;
+    if (i==6) {
+        i = i-1;
+    }
+    else if (i==3) {
+        i = i+1;
+    }
+    else if (i==5) {
+        i = i+1;
+    }
+    else {
+        i = i+1;
+    }
+    testSi5 = i==6;
+    cout<<"testSi5 = "<<testSi5;
+    return 0;
+}

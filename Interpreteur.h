@@ -20,7 +20,7 @@ public:
 	inline const TableSymboles & getTable () const  { return m_table;    } // accesseur	
 	inline Noeud* getArbre () const { return m_arbre; }                    // accesseur
         
-        void traduitEnCPP(ostream & cout, unsigned int indentation) const;
+        void traduitEnCPP(fstream & cout, unsigned int indentation) const;
 
 	
 private:

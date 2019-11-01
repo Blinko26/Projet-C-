@@ -17,6 +17,8 @@
                    projectFiles="true">
       <itemPath>motsCles.txt</itemPath>
       <itemPath>programme.txt</itemPath>
+      <itemPath>programmeAvecErreur.txt</itemPath>
+      <itemPath>programmeAvecErreurExec.txt</itemPath>
       <itemPath>testEcrire.txt</itemPath>
       <itemPath>testErreur.txt</itemPath>
       <itemPath>testIncr.txt</itemPath>
@@ -27,6 +29,7 @@
       <itemPath>testSelon.txt</itemPath>
       <itemPath>testSiRiche.txt</itemPath>
       <itemPath>testTantQue.txt</itemPath>
+      <itemPath>tradCPP.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -119,6 +122,10 @@
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="programmeAvecErreurExec.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="testEcrire.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
@@ -144,6 +151,8 @@
       <item path="tests/siRicheTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -212,6 +221,10 @@
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="programmeAvecErreurExec.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="testEcrire.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
@@ -237,6 +250,8 @@
       <item path="tests/siRicheTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTestRunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

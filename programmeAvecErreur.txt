@@ -3,11 +3,11 @@
 # Résultat attendu :
 # i = 1;
 # Les lignes de commentaires commencent par #
-procedure principale()
+zerprocedure principale()
   i = 12+3;                 # i = 15
-  si (i>14)                 # 15>14, Rentre dans le si
+  si (i>14)     zer            # 15>14, Rentre dans le si
     i=1;                    # i = 1
-  finsi
+  finsizer
   ecrire("i = ", i);        # Retourne "i = 1"
 finproc
 # Commentaire Final
