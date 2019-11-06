@@ -1,0 +1,25 @@
+# Fichier de test
+# test du Si
+# Résultat attendu :
+# i = 1;
+# Les lignes de commentaires commencent par #
+procedure principale()
+
+i=0;
+si(i==3 # Erreur : Doit détecter une erreur
+    i=4;
+sinon(i==4 
+    i=5;
+finsi
+
+ecrire(i); # Aucune erreur synthaxe correcte
+
+pour(j=0; j<5; j=j+1 # Erreur : Detecte une erreur
+ecrire("test");
+finpour # Erreur : Le Pour n'a pas commencé car erreur
+
+si(1==1)
+    ecrire("Bonjour");
+finsi
+
+# Commentaire Final

@@ -1,0 +1,14 @@
+# Fichier de test
+# Test du Lire
+# Les lignes de commentaires commencent par #
+procedure principale()
+#Test 1 : On rentre un int
+    ecrire("Entrez x :");           # Retourne Entrez x :
+    lire(x);                        # Attend une variable x entrée au clavier
+
+#Test 2 : On rentre deux valeurs
+   ecrire("Entrez y et k:");        # Retourne Entrez y et k :
+    lire(y,k);                      # Attend deux variables y puis k entrées au clavier
+
+finproc
+# Commentaire Final

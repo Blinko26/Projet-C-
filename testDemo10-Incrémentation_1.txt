@@ -1,0 +1,39 @@
+# Fichier de test
+# test du Ecrire 
+# Les lignes de commentaires commencent par #
+procedure principale()
+
+    #Test 1 : Incrémentation
+
+    i = 1;
+    i+=8;
+
+    ecrire("i=",i);
+
+    i = 1;
+    i-=8;
+
+    ecrire("i=",i);
+
+    i = 1;
+    i*=8;
+
+    ecrire("i=",i);
+
+    i = 16;
+    i/=8;
+
+    ecrire("i=",i);
+
+    #Test Incrémentation et décrémentation
+
+    j=1;
+    j++;
+    ecrire("On doit trouver j = 2 et j =",j);
+
+    j=1;
+    j--;
+    ecrire("On doit trouver j = 0 et j =",j);
+
+finproc
+# Commentaire Final

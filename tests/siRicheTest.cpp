@@ -32,7 +32,7 @@ void siRicheTest::tearDown() {
 
 void siRicheTest::testNoeudInstSiRiche() {
     string nomFich;
-    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
+    nomFich = "test01-SiSinonSi.txt";
     ifstream fichier(nomFich.c_str());
     Interpreteur interpreteur(fichier);
     CPPUNIT_ASSERT_NO_THROW(interpreteur.analyse());
@@ -40,7 +40,7 @@ void siRicheTest::testNoeudInstSiRiche() {
     CPPUNIT_ASSERT_NO_THROW_MESSAGE("Instruction Interprétation problème",interpreteur.getArbre());
     
     string nomFich2;
-    nomFich2 = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programmeAvecErreur.txt";
+    nomFich2 = "programmeAvecErreur.txt";
     ifstream fichier2(nomFich2.c_str());
     Interpreteur interpreteur2(fichier);
     CPPUNIT_ASSERT_THROW(interpreteur2.analyse(),InterpreteurException);
@@ -49,7 +49,7 @@ void siRicheTest::testNoeudInstSiRiche() {
 
 void siRicheTest::testExecuter() {
     string nomFich;
-    nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
+    nomFich = "test01-SiSinonSi.txt";
     ifstream fichier(nomFich.c_str());
     if (fichier.fail()) throw FichierException();
     Interpreteur interpreteur(fichier);
@@ -68,7 +68,7 @@ void siRicheTest::testExecuter() {
     }
     
     string nomFich2;
-    nomFich2 = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/programmeAvecErreurExec.txt";
+    nomFich2 = "programmeAvecErreurExec.txt";
     ifstream fichier2(nomFich2.c_str());
     if (fichier2.fail()) throw FichierException();
     Interpreteur interpreteur2(fichier2);
@@ -81,7 +81,7 @@ void siRicheTest::testExecuter() {
 
 void siRicheTest::testTraduitEnCPP() {
         string nomFich;
-        nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/testSiRiche.txt";
+        nomFich = "/users/info/etu-s3/viellarb/NetBeansProjects/M3105-TP5/test01-SiSinonSi.txt";
         ifstream fichier(nomFich.c_str());
         if (fichier.fail()) throw FichierException();
         Interpreteur interpreteur(fichier);

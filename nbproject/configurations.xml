@@ -15,21 +15,33 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="testDemo" projectFiles="true">
+        <itemPath>testDemo01-SiSinonSi_1.txt</itemPath>
+        <itemPath>testDemo02-tantQue_1.txt</itemPath>
+        <itemPath>testDemo03-Repeter_1.txt</itemPath>
+        <itemPath>testDemo04-Pour_1.txt</itemPath>
+        <itemPath>testDemo05-Ecrire_1.txt</itemPath>
+        <itemPath>testDemo06-Lire_1.txt</itemPath>
+        <itemPath>testDemo07-Exception_1.txt</itemPath>
+        <itemPath>testDemo08-Priorité_1.txt</itemPath>
+        <itemPath>testDemo09-Selon_1.txt</itemPath>
+        <itemPath>testDemo10-Incrémentation_1.txt</itemPath>
+      </logicalFolder>
       <itemPath>motsCles.txt</itemPath>
       <itemPath>programme.txt</itemPath>
-      <itemPath>programmeAvecErreur.txt</itemPath>
-      <itemPath>programmeAvecErreurExec.txt</itemPath>
-      <itemPath>testEcrire.txt</itemPath>
-      <itemPath>testErreur.txt</itemPath>
-      <itemPath>testIncr.txt</itemPath>
-      <itemPath>testLire.txt</itemPath>
-      <itemPath>testPour.txt</itemPath>
-      <itemPath>testPriorité.txt</itemPath>
-      <itemPath>testRepeter.txt</itemPath>
-      <itemPath>testSelon.txt</itemPath>
-      <itemPath>testSiRiche.txt</itemPath>
-      <itemPath>testTantQue.txt</itemPath>
-      <itemPath>tradCPP.txt</itemPath>
+      <itemPath>test01-SiSinonSi.txt</itemPath>
+      <itemPath>test02-tantQue.txt</itemPath>
+      <itemPath>test03-Repeter.txt</itemPath>
+      <itemPath>test04-Pour.txt</itemPath>
+      <itemPath>test05-Ecrire.txt</itemPath>
+      <itemPath>test06-Lire.txt</itemPath>
+      <itemPath>test07-Exception.txt</itemPath>
+      <itemPath>test08-Priorité.txt</itemPath>
+      <itemPath>test09-Selon.txt</itemPath>
+      <itemPath>test10-Incrémentation.txt</itemPath>
+      <itemPath>testUnit-programmeAvecErreur.txt</itemPath>
+      <itemPath>testUnit-programmeAvecErreurExec.txt</itemPath>
+      <itemPath>testUnit-tradCPP.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -122,37 +134,60 @@
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      <item path="test01-SiSinonSi.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="programmeAvecErreurExec.txt" ex="false" tool="3" flavor2="0">
+      <item path="test02-tantQue.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testEcrire.txt" ex="false" tool="3" flavor2="0">
+      <item path="test03-Repeter.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
+      <item path="test04-Pour.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testIncr.txt" ex="false" tool="3" flavor2="0">
+      <item path="test05-Ecrire.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testLire.txt" ex="false" tool="3" flavor2="0">
+      <item path="test06-Lire.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testPour.txt" ex="false" tool="3" flavor2="0">
+      <item path="test07-Exception.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testPriorité.txt" ex="false" tool="3" flavor2="0">
+      <item path="test08-Priorité.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testRepeter.txt" ex="false" tool="3" flavor2="0">
+      <item path="test09-Selon.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testSelon.txt" ex="false" tool="3" flavor2="0">
+      <item path="test10-Incrémentation.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testSiRiche.txt" ex="false" tool="3" flavor2="0">
+      <item path="testDemo01-SiSinonSi_1.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testTantQue.txt" ex="false" tool="3" flavor2="0">
+      <item path="testDemo02-tantQue_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo03-Repeter_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo04-Pour_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo05-Ecrire_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo06-Lire_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo07-Exception_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo08-Priorité_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo09-Selon_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo10-Incrémentation_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testUnit-programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testUnit-programmeAvecErreurExec.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="testUnit-tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/siRicheTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTestRunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -221,37 +256,60 @@
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      <item path="test01-SiSinonSi.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="programmeAvecErreurExec.txt" ex="false" tool="3" flavor2="0">
+      <item path="test02-tantQue.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testEcrire.txt" ex="false" tool="3" flavor2="0">
+      <item path="test03-Repeter.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testErreur.txt" ex="false" tool="3" flavor2="0">
+      <item path="test04-Pour.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testIncr.txt" ex="false" tool="3" flavor2="0">
+      <item path="test05-Ecrire.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testLire.txt" ex="false" tool="3" flavor2="0">
+      <item path="test06-Lire.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testPour.txt" ex="false" tool="3" flavor2="0">
+      <item path="test07-Exception.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testPriorité.txt" ex="false" tool="3" flavor2="0">
+      <item path="test08-Priorité.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testRepeter.txt" ex="false" tool="3" flavor2="0">
+      <item path="test09-Selon.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testSelon.txt" ex="false" tool="3" flavor2="0">
+      <item path="test10-Incrémentation.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testSiRiche.txt" ex="false" tool="3" flavor2="0">
+      <item path="testDemo01-SiSinonSi_1.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="testTantQue.txt" ex="false" tool="3" flavor2="0">
+      <item path="testDemo02-tantQue_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo03-Repeter_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo04-Pour_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo05-Ecrire_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo06-Lire_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo07-Exception_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo08-Priorité_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo09-Selon_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testDemo10-Incrémentation_1.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testUnit-programmeAvecErreur.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="testUnit-programmeAvecErreurExec.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="testUnit-tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/siRicheTest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/siRicheTestRunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tradCPP.txt" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

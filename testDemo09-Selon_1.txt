@@ -1,0 +1,15 @@
+# Fichier de test
+# Les lignes de commentaires commencent par #
+procedure principale()
+    
+    i = 0;
+    selon(i)
+        cas 0 :
+                i=i+1;
+        defaut :
+                i=i+2;
+    finselon
+
+        
+finproc
+# Commentaire Final

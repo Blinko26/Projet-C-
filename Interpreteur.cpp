@@ -77,7 +77,7 @@ Noeud* Interpreteur::seqInst() {
   // <seqInst> ::= <inst> { <inst> }
   NoeudSeqInst* sequence = new NoeudSeqInst();
   do {
-    sequence->ajoute(inst());
+       sequence->ajoute(inst());
   } while (m_lecteur.getSymbole() == "<VARIABLE>" || m_lecteur.getSymbole() == "si" || m_lecteur.getSymbole() == "tantque" || m_lecteur.getSymbole() == "repeter" || m_lecteur.getSymbole() == "pour" || m_lecteur.getSymbole() == "ecrire" || m_lecteur.getSymbole() == "ecrireligne" || m_lecteur.getSymbole() == "lire" || m_lecteur.getSymbole() == "selon");
   // Tant que le symbole courant est un début possible d'instruction...
   // Il faut compléter cette condition chaque fois qu'on rajoute une nouvelle instruction
@@ -88,34 +88,44 @@ Noeud* Interpreteur::inst() {
   // <inst> ::= <affectation>  ; | <instSi>
   // Retourne la procédure à utiliser en fonction du symbole courant
     
-    if (m_lecteur.getSymbole() == "<VARIABLE>") {
-      Noeud *affect = affectation();
-      testerEtAvancer(";");
-      return affect;
-    }
-    else if (m_lecteur.getSymbole() == "si")
-      return instSiRiche();
-    else if (m_lecteur.getSymbole() == "tantque")
-      return instTantQue();
-    else if (m_lecteur.getSymbole() == "repeter"){
-      return instRepeter();
-    }
-    else if (m_lecteur.getSymbole() == "pour")
-      return instPour(); 
-    else if (m_lecteur.getSymbole() == "ecrire")
-      return instEcrire();
-    else if (m_lecteur.getSymbole() == "ecrireligne"){
-      return instEcrireLigne();
-    }
-    else if (m_lecteur.getSymbole() == "lire")
-      return instLire();
-    else if (m_lecteur.getSymbole() == "selon"){
-      return instSelon();
-    }
-    // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
-    else {
-        erreur("Erreur: Instruction");
-        return nullptr;
+    try{
+    
+        if (m_lecteur.getSymbole() == "<VARIABLE>") {
+          Noeud *affect = affectation();
+          testerEtAvancer(";");
+          return affect;
+        }
+        else if (m_lecteur.getSymbole() == "si")
+          return instSiRiche();
+        else if (m_lecteur.getSymbole() == "tantque")
+          return instTantQue();
+        else if (m_lecteur.getSymbole() == "repeter"){
+          return instRepeter();
+        }
+        else if (m_lecteur.getSymbole() == "pour")
+          return instPour(); 
+        else if (m_lecteur.getSymbole() == "ecrire")
+          return instEcrire();
+        else if (m_lecteur.getSymbole() == "ecrireligne"){
+          return instEcrireLigne();
+        }
+        else if (m_lecteur.getSymbole() == "lire")
+          return instLire();
+        else if (m_lecteur.getSymbole() == "selon"){
+          return instSelon();
+        }
+        // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
+        else {
+            erreur("Erreur: Instruction");
+            //return nullptr;
+        }
+    }catch(SyntaxeException const& e){ // on récupère l'exception qui a été levée
+        cout << e.what() << endl;
+        while((m_lecteur.getSymbole()!="si"&& m_lecteur.getSymbole()!="tantque" && m_lecteur.getSymbole()!="pour" &&
+               m_lecteur.getSymbole()!="ecrire" && m_lecteur.getSymbole()!="lire"&& 
+               m_lecteur.getSymbole()!="selon") && m_lecteur.getSymbole()!="<FINDEFICHIER>"){
+            m_lecteur.avancer(); // on fait avancer le lecteur tant qu'il ne lit pas un des symbole du while
+        }
     }
 }
 

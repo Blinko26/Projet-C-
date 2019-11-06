@@ -1,0 +1,20 @@
+# Fichier de test
+# test du Ecrire 
+# Les lignes de commentaires commencent par #
+procedure principale()
+
+#test 1 : ecriture d'un entier
+    ecrireligne(2);                          # Retourne 2
+#test 2 : ecriture d'une expression
+    ecrireligne(2+5);                        # Retourne 7
+
+#test 3 : ecriture d'une variable
+    i=5;
+
+    ecrireligne(i);                          # Retourne 5
+
+#test 4 : Ecriture d'une chaine
+
+    ecrireligne("Bonjour");
+finproc
+# Commentaire Final

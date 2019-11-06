@@ -1,0 +1,19 @@
+# Fichier de test de l'instruction pour
+# Test du Pour
+# Résultats attendus :
+# testPour1 = 1
+# testPour2 = 1
+# testPour3 = 1
+# testPour4 = 1
+# Les lignes de commentaires commencent par #
+procedure principale()
+#test1 : on essaye un pour avec chaque instruction
+    j = 0;
+    pour(i=0;i<10;i=i+1)                    # i prend 10 valeurs allant de 0 à 9
+        j=j+1;                              # j = 10
+    finpour
+    testPour1 = (j==i);                     # Vrai, testPour1 = 1;
+    ecrire("testPour1 = ", testPour1);      # Retourne testPour1 = 1
+
+finproc
+# Commentaire Final

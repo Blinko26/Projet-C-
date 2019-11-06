@@ -1,0 +1,27 @@
+# Fichier de test
+# Test du SiRiche
+# Résultats attendus :
+# testSi1 = 1
+# testSi2 = 1
+# testSi3 = 1
+# testSi4 = 1
+# testSi5 = 1
+# Les lignes de commentaires commencent par #
+procedure principale()
+    i = 1;
+# test : on teste le sinonsi s'il y en a plusieurs
+    si(i==6)            # i = 5, ne rentre pas dans le si
+        i=i-1;
+    sinonsi(i==3)       # i = 5, ne rentre pas dans le sinonsi
+        i=i+1;
+    sinonsi(i==5)       # Rentre dans le sinonsi
+        i=i+1;          # i = 6
+    sinon               # Ne rentre pas dans le sinon car passé par sinonsi
+        i=i+1;
+    finsi
+testSi = (i==6);       # Vrai, testSi = 1;
+ecrire("testSi = ", testSi);
+
+
+finproc
+# Commentaire Final

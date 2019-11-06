@@ -1,0 +1,14 @@
+# Fichier de test de l'instruction tantque
+# Resultats attendus :
+# testTantQue = 1
+# testPasFait = 1
+# Les lignes de commentaires commencent par #
+procedure principale()
+#test1 : test de la boucle
+  i = 0;
+  tantque(i<10)             # on reste dans la boucle jusqu'à ce que i = 10
+    i = i + 1;              # i = 10
+  fintantque
+  testTantQue = (i==10);    # Vrai, testTantQue = 1
+finproc
+# Commentaire Final
