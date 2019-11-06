@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
                 FILE *fp = fopen("tradCPP.txt", "w");
                 fclose(fp); 
                 string fichCPP;
-                fichCPP = "tradCPP.txt";
+                fichCPP = "../testProjetC++/main.cpp";
                 fstream fichierCPP(fichCPP.c_str());
                 interpreteur.traduitEnCPP(fichierCPP,0);
 

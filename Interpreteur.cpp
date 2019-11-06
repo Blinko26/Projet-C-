@@ -46,7 +46,10 @@ void Interpreteur::erreur(const string & message) const {
   throw SyntaxeException(messageWhat);
 }
 
-void Interpreteur::traduitEnCPP(fstream & cout,unsigned int indentation)const{  
+void Interpreteur::traduitEnCPP(fstream & cout,unsigned int indentation)const{
+    cout << "#include <cstdlib>"<<endl;
+    cout << "using namespace std;"<<endl;
+    cout << "#include <iostream>"<<endl;
     cout << setw(4*indentation)<<""<<"int main() {"<< endl; // Début d’un programme C++
     // Ecrire en C++ la déclaration des variables présentes dans le programme... 
     // ... variables dont on retrouvera le nom en parcourant la table des symboles ! 
