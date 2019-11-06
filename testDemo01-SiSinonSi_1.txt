@@ -19,7 +19,7 @@ procedure principale()
     sinon               # Ne rentre pas dans le sinon car passé par sinonsi
         i=i+1;
     finsi
-testSi = (i==6);       # Vrai, testSi = 1;
+testSi = (i==2);       # Vrai, testSi = 1;
 ecrire("testSi = ", testSi);
 
 

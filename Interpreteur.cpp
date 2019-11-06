@@ -6,11 +6,11 @@
 using namespace std;
 
 Interpreteur::Interpreteur(ifstream & fichier) :
-m_lecteur(fichier), m_table(), m_arbre(nullptr) { // Création d'un interpréteur 
+m_lecteur(fichier), m_table(), m_arbre(nullptr),m_compteurE(0) { // Création d'un interpréteur 
 }
 
 void Interpreteur::analyse() {
-  m_arbre = programme(); // on lance l'analyse de la première règle
+    m_arbre = programme(); // on lance l'analyse de la première règle
 }
 
 void Interpreteur::tester(const string & symboleAttendu) const {
@@ -73,7 +73,11 @@ Noeud* Interpreteur::programme() {
   Noeud* sequence = seqInst();
   testerEtAvancer("finproc");
   tester("<FINDEFICHIER>");
-  return sequence;
+  if (m_compteurE==0){
+    return sequence;
+  }else{
+      return nullptr;
+  }
 }
 
 Noeud* Interpreteur::seqInst() {
@@ -92,21 +96,39 @@ Noeud* Interpreteur::inst() {
   // Retourne la procédure à utiliser en fonction du symbole courant
     
     try{
-    
         if (m_lecteur.getSymbole() == "<VARIABLE>") {
           Noeud *affect = affectation();
           testerEtAvancer(";");
           return affect;
         }
         else if (m_lecteur.getSymbole() == "si")
-          return instSiRiche();
+            try{
+                return instSiRiche();
+            }catch(SyntaxeException const& e) {
+                m_compteurE+=1;
+                cout << e.what() << endl;
+                while((m_lecteur.getSymbole()!="finsi")){
+                        m_lecteur.avancer(); // on fait avancer le lecteur tant qu'il ne lit pas un des symbole du while
+                }
+                m_lecteur.avancer();
+            }
         else if (m_lecteur.getSymbole() == "tantque")
           return instTantQue();
         else if (m_lecteur.getSymbole() == "repeter"){
             return instRepeter();
         }
-        else if (m_lecteur.getSymbole() == "pour")
-          return instPour(); 
+        else if (m_lecteur.getSymbole() == "pour"){
+            try{
+                return instPour();
+            } catch(SyntaxeException const& e) {
+                m_compteurE+=1;
+                cout << e.what() << endl;
+                while((m_lecteur.getSymbole()!="finpour")){
+                        m_lecteur.avancer(); // on fait avancer le lecteur tant qu'il ne lit pas un des symbole du while
+                }
+                m_lecteur.avancer();
+            }
+        }
         else if (m_lecteur.getSymbole() == "ecrire")
           return instEcrire();
         else if (m_lecteur.getSymbole() == "ecrireligne"){
@@ -115,7 +137,16 @@ Noeud* Interpreteur::inst() {
         else if (m_lecteur.getSymbole() == "lire")
           return instLire();
         else if (m_lecteur.getSymbole() == "selon"){
-          return instSelon();
+          try{
+                return instSelon();
+            }catch(SyntaxeException const& e) {
+                m_compteurE+=1;
+                cout << e.what() << endl;
+                while((m_lecteur.getSymbole()!="finselon")){
+                        m_lecteur.avancer(); // on fait avancer le lecteur tant qu'il ne lit pas un des symbole du while
+                }
+                m_lecteur.avancer();
+            }
         }
         // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
         else {
@@ -124,12 +155,14 @@ Noeud* Interpreteur::inst() {
         }
     }catch(SyntaxeException const& e){ // on récupère l'exception qui a été levée
         cout << e.what() << endl;
+        m_compteurE+=1;
         while((m_lecteur.getSymbole()!="si"&& m_lecteur.getSymbole()!="tantque" && m_lecteur.getSymbole()!="pour" &&
                m_lecteur.getSymbole()!="ecrire" && m_lecteur.getSymbole()!="lire"&& 
                m_lecteur.getSymbole()!="selon") && m_lecteur.getSymbole()!="<FINDEFICHIER>"){
             m_lecteur.avancer(); // on fait avancer le lecteur tant qu'il ne lit pas un des symbole du while
         }
     }
+    return nullptr;
 }
 
 Noeud* Interpreteur::affectation() {
@@ -416,7 +449,7 @@ Noeud* Interpreteur::instLire() {
 }
 
 Noeud* Interpreteur::instSelon() {
-    // <instSelon>     :: = selon(<variable>) [cas <expression> : <seqInst>] dafaut : <seqInst> finselon
+    // <instSelon>     :: = selon(<variable>) [cas <expression> : <seqInst>] defaut : <seqInst> finselon
     // On vérifie que ce qui est écrit respecte la syntaxe de l'instruction "Selon"
     Noeud* exp;
     Noeud* instruction;

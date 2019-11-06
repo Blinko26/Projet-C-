@@ -377,25 +377,26 @@ int NoeudInstSelon::executer() {
 }
 
 void NoeudInstSelon::traduitEnCPP(ostream & cout,unsigned int indentation) const{    
-    /*cout << setw(4*indentation)<<""<<"switch(";
-    m_variable->traduitEnCPPPour();
-    cout << ")"<<endl;
-    cout << setw(4*indentation)<<""<< "{";
-    
+    cout << setw(4*indentation)<<""<<"switch(";
+    cout<<m_variable->executer();
+    cout << ") {" <<endl;    
     int i=0;
-    for(auto exp : m_vectCondition){ // On parcourt le vecteur de conditions
-        cout << "case "<< exp.traduieeCPP();
+    for(auto exp : m_vectCondition){ // On parcourt le vecteur de conditions     
         if(exp==NULL){
-            m_vectInst.at(i)->executer();
-            cout << m_vectInst[i]<<endl;
-            break;
-        } else if (m_variable->executer()==exp->executer()){
-            m_vectInst.at(i)->executer();
-            break;
+            cout << setw(4*indentation)<<"" <<"default :" << endl;
+            m_vectInst.at(i)->traduitEnCPP(cout,indentation+1);
+            cout << setw(8*indentation) <<""<<"break;"<<endl;
+        } else{
+            cout << setw(4*indentation)<<""<< "case ";
+            exp->traduitEnCPP(cout,indentation);
+            cout << " : "<<endl;
+            m_vectInst.at(i)->traduitEnCPP(cout, indentation+1);
+            cout << setw(8*indentation)<<""<< "break;"<<endl;
+
         }
         i++;
     }
     
-    cout << "; \n";*/
+    cout << setw(4*indentation)<<""<< "} \n";
     
 }
