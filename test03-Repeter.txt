@@ -11,10 +11,5 @@ procedure principale()
   jusqua(i==5);                 # tant que i !=5, i = i+1
     testRepeter1 = (i==5);      # Vrai, testRepeter1 = 1;
 
-#test2 : on teste le repeter sans utiliser de variable autre que notre test
-    testRepeter2 = 0;
-  repeter
-    testRepeter2 = 1;
-   jusqua(1);                   # dès que vrai, testRepeter2 = 1
 finproc
 # Commentaire Final

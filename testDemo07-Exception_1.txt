@@ -8,7 +8,7 @@ procedure principale()
 i=0;
 si(i==3 # Erreur : Doit détecter une erreur
     i=4;
-sinon(i==4 
+sinon(i==4 # Ne detecte pas d'erreur car erreur avant
     i=5;
 finsi
 

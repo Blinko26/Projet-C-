@@ -6,19 +6,17 @@
 procedure principale()
 
 i=0;
-si(i==3 # doit détecter cette erreur
+si(i==3 # Erreur : Doit détecter une erreur
     i=4;
-sinonsi(i==4 # ne detectera pas celle ci
+sinon(i==4  # Ne detecte pas d'erreur car erreur avant
     i=5;
-sinon
-    i=10;
 finsi
 
-ecrire(i); # ne dira rien car syntaxe correcte
+ecrire(i); # Aucune erreur synthaxe correcte
 
-pour(j=0; j<5; j=j+1 # detectera cette erreur
+pour(j=0; j<5; j=j+1 # Erreur : Detecte une erreur
 ecrire("test");
-finpour # va détecter une erreur car le pour n'a pas commencer vu que celui-ci a une mauvaise syntaxe
+finpour # Erreur : Le Pour n'a pas commencé car erreur
 
 si(1==1)
     ecrire("Bonjour");
