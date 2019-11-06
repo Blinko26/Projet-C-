@@ -382,6 +382,19 @@ void NoeudInstSelon::traduitEnCPP(ostream & cout,unsigned int indentation) const
     cout << ")"<<endl;
     cout << setw(4*indentation)<<""<< "{";
     
+    int i=0;
+    for(auto exp : m_vectCondition){ // On parcourt le vecteur de conditions
+        cout << "case "<< exp.traduieeCPP();
+        if(exp==NULL){
+            m_vectInst.at(i)->executer();
+            cout << m_vectInst[i]<<endl;
+            break;
+        } else if (m_variable->executer()==exp->executer()){
+            m_vectInst.at(i)->executer();
+            break;
+        }
+        i++;
+    }
     
     cout << "; \n";*/
     

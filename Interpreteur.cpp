@@ -100,7 +100,7 @@ Noeud* Interpreteur::inst() {
         else if (m_lecteur.getSymbole() == "tantque")
           return instTantQue();
         else if (m_lecteur.getSymbole() == "repeter"){
-          return instRepeter();
+            return instRepeter();
         }
         else if (m_lecteur.getSymbole() == "pour")
           return instPour(); 
